@@ -1,8 +1,13 @@
 import { Request, Response, NextFunction } from "express";
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 import { COOKIE_NAME } from "./constants.js";
+import jwt, { SignOptions } from "jsonwebtoken";
 
-export const createToken = (id: string, email: string, expiresIn: string) => {
+export const createToken = (
+  id: string,
+  email: string,
+  expiresIn: SignOptions["expiresIn"],
+) => {
   const payload = { id, email };
   const token = jwt.sign(payload, process.env.JWT_SECRET, {
     expiresIn,
@@ -13,7 +18,7 @@ export const createToken = (id: string, email: string, expiresIn: string) => {
 export const verifyToken = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const token = req.signedCookies[`${COOKIE_NAME}`];
   if (!token || token.trim() === "") {
