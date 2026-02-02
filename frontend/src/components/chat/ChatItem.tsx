@@ -2,7 +2,8 @@ import React from "react";
 import { Box, Avatar, Typography } from "@mui/material";
 import { useAuth } from "../../context/AuthContext";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+import coldarkDark from "react-syntax-highlighter/dist/esm/styles/prism/coldark-dark.js";
 
 function extractCodeFromString(message: string) {
   if (message.includes("```")) {
@@ -62,7 +63,7 @@ const ChatItem = ({
               </SyntaxHighlighter>
             ) : (
               <Typography sx={{ fontSize: "20px" }}>{block}</Typography>
-            )
+            ),
           )}
       </Box>
     </Box>
@@ -93,7 +94,7 @@ const ChatItem = ({
               </SyntaxHighlighter>
             ) : (
               <Typography sx={{ fontSize: "20px" }}>{block}</Typography>
-            )
+            ),
           )}
       </Box>
     </Box>
