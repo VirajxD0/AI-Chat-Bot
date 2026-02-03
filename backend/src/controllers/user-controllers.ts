@@ -7,7 +7,7 @@ import { COOKIE_NAME } from "../utils/constants.js";
 export const getAllUsers = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     //get all users
@@ -22,7 +22,7 @@ export const getAllUsers = async (
 export const userSignup = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     //user signup
@@ -50,6 +50,7 @@ export const userSignup = async (
       expires,
       httpOnly: true,
       signed: true,
+      sameSite: "lax",
     });
 
     return res
@@ -64,7 +65,7 @@ export const userSignup = async (
 export const userLogin = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     //user login
@@ -96,6 +97,7 @@ export const userLogin = async (
       expires,
       httpOnly: true,
       signed: true,
+      sameSite: "lax",
     });
 
     return res
@@ -110,7 +112,7 @@ export const userLogin = async (
 export const verifyUser = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     //user token check
@@ -133,7 +135,7 @@ export const verifyUser = async (
 export const userLogout = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     //user token check
